@@ -7,7 +7,7 @@ public class Policy{
    private String lastName;
    private int age;
    private String status;
-   private int height;
+   private double height;
    private double weight;
    
    //Create a no-arg constructor that accepts arguments
@@ -23,7 +23,7 @@ public class Policy{
    }
    
    //Create a constructor that accepts all necessary arguments to fully initialize the Policy object
-   public Policy(int number, String insuranceProviderName, String policyholderFirstName, String policyholderLastName, int policyholderAge, String smokingStatus, int policyholderHeight, double policyholderWeight){
+   public Policy(int number, String insuranceProviderName, String policyholderFirstName, String policyholderLastName, int policyholderAge, String smokingStatus, double policyholderHeight, double policyholderWeight){
       policyNumber = number;
       providerName = insuranceProviderName;
       firstName = policyholderFirstName;
@@ -67,7 +67,7 @@ public class Policy{
       status = statusGiven;
    }
    
-   public void setHeight(int heightGiven){
+   public void setHeight(double heightGiven){
       height = heightGiven;
    }
    
@@ -95,15 +95,15 @@ public class Policy{
       return age;
    }
    
-   public String setStatus(){
+   public String getStatus(){
       return status;
    }
    
-   public int setHeight(){
+   public double getHeight(){
       return height;
    }
    
-   public double setWeight(){
+   public double getWeight(){
       return weight;
    }
   
@@ -114,8 +114,8 @@ public class Policy{
    @param height - The height of the policyholder
    */
    
-   public static double calculateBMI(double weight, int height){
-      double bmi = (weight * 703) / (height^2);
+   public static double calculateBMI(double weight, double height){
+      double bmi = (weight * 703) / (height * height);
       return bmi;
    }
    
