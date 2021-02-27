@@ -1,81 +1,75 @@
 public class Policy{
 
    //Create a private field for the variables
-   private int policyNumber;
+   private String policyNumber;
    private String providerName;
    private String firstName;
    private String lastName;
    private int age;
-   private String status;
+   private String smokingStatus;
    private double height;
    private double weight;
    
    //Create a no-arg constructor that accepts arguments
    public Policy(){
-      policyNumber = 0;
+      policyNumber = "";
       providerName = "";
       firstName = "";
       lastName = "";
       age = 0;
-      status = "";
+      smokingStatus = "";
       height = 0;
       weight = 0.0;
    }
    
    //Create a constructor that accepts all necessary arguments to fully initialize the Policy object
-   public Policy(int number, String insuranceProviderName, String policyholderFirstName, String policyholderLastName, int policyholderAge, String smokingStatus, double policyholderHeight, double policyholderWeight){
-      policyNumber = number;
-      providerName = insuranceProviderName;
-      firstName = policyholderFirstName;
-      lastName = policyholderLastName;
-      age = policyholderAge;
-      status = smokingStatus;
-      height = policyholderHeight;
-      weight = policyholderWeight;
+   public Policy(String pnumber, String pName, String fName, String lName, int a, String sStatus, double h, double w){
+      policyNumber = pnumber;
+      providerName = pName;
+      firstName = fName;
+      lastName = lName;
+      age = a;
+      smokingStatus = sStatus;
+      height = h;
+      weight = w;
    }
    //Create setters and getters for each field
    
-   public void setPolicyNumber(int policyNumberGiven){
-      policyNumber = policyNumberGiven;
+   public void setPolicyNumber(String pNumber){
+      policyNumber = pNumber;
    }
    
-   public void setPolicyNumber(String policyNumberGiven){
-      policyNumber = Integer.parseInt(policyNumberGiven);
+   
+   public void setProviderName(String pName){
+      providerName = pName;
    }
    
-   public void setProviderName(String providerNameGiven){
-      providerName = providerNameGiven;
+   public void setFirstName(String fName){
+      firstName = fName;
    }
    
-   public void setFirstName(String firstNameGiven){
-      firstName = firstNameGiven;
+   public void setLastName(String lName){
+      lastName = lName;
    }
    
-   public void setLastName(String lastNameGiven){
-      lastName = lastNameGiven;
+   public void setAge(int a){
+      age = a;
    }
    
-   public void setAge(int ageGiven){
-      age = ageGiven;
+   
+   public void setSmokingStatus(String sStatus){
+      smokingStatus = sStatus;
    }
    
-   public void setAge(String ageGiven){
-      age = Integer.parseInt(ageGiven);
+   public void setHeight(double h){
+      height = h;
    }
    
-   public void setStatus(String statusGiven){
-      status = statusGiven;
+   public void setWeight(double w){
+      weight = w;
    }
    
-   public void setHeight(double heightGiven){
-      height = heightGiven;
-   }
-   
-   public void setWeight(double weightGiven){
-      weight = weightGiven;
-   }
-   
-   public int getPolicyNumber(){
+   public String getPolicyNumber(){
       return policyNumber;
    }
    
@@ -95,8 +89,8 @@ public class Policy{
       return age;
    }
    
-   public String getStatus(){
-      return status;
+   public String getSmokingStatus(){
+      return smokingStatus;
    }
    
    public double getHeight(){
@@ -114,9 +108,9 @@ public class Policy{
    @param height - The height of the policyholder
    */
    
-   public static double calculateBMI(double weight, double height){
-      double bmi = (weight * 703) / (height * height);
-      return bmi;
+   public double getBMI(){
+      final double CONVFACTOR = 703;
+      return (weight * CONVFACTOR) / (height * height);
    }
    
    /**
@@ -128,32 +122,29 @@ public class Policy{
          -Additional Fee = (BMI - 35) * 20
    */
    
-   public static double calculateInsurancePolicy(int age, String status, double bmi)
+   public double getPrice ()
    {
-      double baseFee = 600;
-      double additionalFee = 0.0;
+      final double BASE_PRICE = 600;
+      final double ADDITIONAL_FEE_AGE = 75;
+      final double ADDITIONAL_FEE_SMOKING = 100;
+      final double ADDITIONAL_FEE_PER_BMI = 20;
       
-      //Create an if statement for addtional fees regarding age
-      if(age < 50){
-         additionalFee = 75;
-         return additionalFee;   
-      }
+      final int AGE_THRESHOLD = 50;
+      final int BMI_THRESHOLD = 35;
       
-      //Create an if else statement for additional fees if the policyholder is a smoker
-      if(status == "smoker"){
-         additionalFee = 100;
-         return additionalFee;
-      }
-      else{
-      }
+      double price = BASE_PRICE;
       
-      //Create an if statement for additional fees if the policyholder has a BMI over 35
-      if(bmi < 35){
-         additionalFee = (bmi - 35) * 20;
-         return additionalFee;
-      }
+      if(age > AGE_THRESHOLD)//Over 50 yrs
+         price += ADDITIONAL_FEE_AGE; //75
+         
+      if(smokingStatus.equalsIgnoreCase("smoker"))
+         price += ADDITIONAL_FEE_SMOKING; //100
       
-      return baseFee + additionalFee; 
+      //Call the getBMI() method
+      if(getBMI() > BMI_THRESHOLD) //BMI OVER #5
+         price += ((getBMI() - BMI_THRESHOLD) * ADDITIONAL_FEE_PER_BMI); //additional BMI fee - 20
+         
+      return price;
    }
    
 }
