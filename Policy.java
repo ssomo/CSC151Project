@@ -61,11 +61,11 @@ public class Policy{
       smokingStatus = sStatus;
    }
    
-   public void setHeight(double h){
+   public void setHeight(int h){
       height = h;
    }
    
-   public void setWeight(double w){
+   public void setWeight(int w){
       weight = w;
    }
    

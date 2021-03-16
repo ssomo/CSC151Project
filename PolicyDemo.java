@@ -1,9 +1,15 @@
 /* This program demonstrates the policy class
 */
+import java.io.*; //for file I/O classes
 import java.util.Scanner; //needed for the scanner class
 
-public class PolicyDemo{
-   public static void main(String[] args){
+public class PolicyDemo
+{
+   public static void main(String[] args) throws IOException
+   {
+      File file = new File("PolicyInformation.txt"); //opens the file
+      Scanner inputFile = new Scanner(file); //uses scanner class to read the file
+      
       //Declare variables
       String policyNumber;
       String providerName;
@@ -13,34 +19,25 @@ public class PolicyDemo{
       String smokingStatus;
       double height;
       double weight;
-      Scanner keyboard = new Scanner(System.in);
-      
-      //prompt the user to enter information about the policy 
-      System.out.print("Please enter the Policy Number: ");
-      policyNumber = keyboard.nextLine();
-            
-      System.out.print("Please enter the Provider Name: ");
-      providerName = keyboard.nextLine();
-      
-      System.out.print("Please enter the Policyholder's First Name: ");
-      firstName = keyboard.nextLine();
-      
-      System.out.print("Please enter the Policyholder's Last Name: ");
-      lastName = keyboard.nextLine();
-      
-      System.out.print("Please enter the Policyholder's Age: ");
-      age = keyboard.nextInt();
-      keyboard.nextLine();
-      
-      System.out.print("Please enter the Policyholder's Smoking Status (smoker/non-smoker): ");
-      smokingStatus = keyboard.nextLine();
-      
-      System.out.print("Please enter the Policyholder's Height (in inches): ");
-      height = keyboard.nextDouble();
-      
-      System.out.print("Please enter the Policyholder's Weight (in pounds): ");
-      weight = keyboard.nextDouble();
-      
+     
+      //create a while loop to read the lines from the file
+      while(inputFile.hasNext())
+      {
+         policyNumber = inputFile.nextLine(); 
+         providerName = inputFile.nextLine();
+         firstName = inputFile.nextLine();
+         lastName = inputFile.nextLine();
+         age = inputFile.nextInt();
+         smokingStatus = inputFile.next();
+         height = inputFile.nextDouble();
+         weight = inputFile.nextDouble();
+         inputFile.next(); //consume the newline character
+         if(inputFile.hasNext())
+         {
+             inputFile.next();//this handles the end of the file to avoid an exception}
+         }
+
+
       //create a Policy object
       Policy policy = new Policy(policyNumber, providerName, firstName, lastName, age, smokingStatus, height, weight);
       
@@ -59,7 +56,10 @@ public class PolicyDemo{
       System.out.printf("Policyholder's BMI: %.2f\n", policy.getBMI());
       System.out.printf("Policy Price: $%.2f\n", policy.getPrice());
       
+      }
+      
+      inputFile.close();
+      
    }
-   
    
 }
