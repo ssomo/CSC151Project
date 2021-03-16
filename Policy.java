@@ -69,34 +69,66 @@ public class Policy{
       weight = w;
    }
    
+   /**
+   Gets the policy number and returns it  
+   @return policyNumber
+   */
    public String getPolicyNumber(){
       return policyNumber;
    }
    
+   /**
+   Gets the provider name and returns it
+   @return providerName 
+   */
    public String getProviderName(){
       return providerName;
    }
    
+   /**
+   Gets the first name of the policy user and returns it
+   @return firstName 
+   */
    public String getFirstName(){
       return firstName;
    }
    
+   /**
+   Gets the last name of the policy user and returns it
+   @return lastName 
+   */
    public String getLastName(){
       return lastName;
    }
    
+   /**
+   Gets the age of the policy user and returns it
+   @return age 
+   */
    public int getAge(){
       return age;
    }
    
+   /**
+   Gets the smokingStatus of the policy user and returns it
+   @return smokingStatus 
+   */
    public String getSmokingStatus(){
       return smokingStatus;
    }
    
+   /**
+   Gets the height of the policy user and returns it
+   @return height 
+   */
    public double getHeight(){
       return height;
    }
    
+   /**
+   Gets the weight of the policy user and returns it
+   @return weight 
+   */
    public double getWeight(){
       return weight;
    }
@@ -104,8 +136,7 @@ public class Policy{
   
    /**
    The calculateBMI method calculates and returns the BMI of the policyholder
-   @param weight - The weight of the policyholder
-   @param height - The height of the policyholder
+   @return (weight * 703) / (height)^2
    */
    
    public double getBMI(){
@@ -116,9 +147,8 @@ public class Policy{
    /**
    The calculateInsurancePolicy calculates and returns the price of the insurance policy
    There is a base fee of $600
-   @param age - If the Policyholder is over 50 years, there is an additional fee of $75
-   @param status - If the Policyholder is a smoker, there is an additional fee of $100
-   If the Policyholder has a BMI of over 35, there is an additional fee calculate as follows:
+   @return price
+      If the Policyholder has a BMI of over 35, there is an additional fee calculate as follows:
          -Additional Fee = (BMI - 35) * 20
    */
    
