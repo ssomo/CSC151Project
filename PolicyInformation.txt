@@ -39,7 +39,7 @@ Reliable
 Jenna
 Lewis
 30
-non-smoker
+smoker
 60.0
 105.0
 

@@ -13,7 +13,7 @@ public class PolicyDemo
       //Declare variables
       String policyNumber = "";
       String providerName = "";
-      String firstName= "";
+      String firstName = "";
       String lastName = "";
       int age = 0;
       String smokingStatus = "";
