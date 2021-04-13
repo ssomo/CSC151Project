@@ -177,4 +177,19 @@ public class Policy{
       return price;
    }
    
+   //Create a toString method
+   public String toString()
+   {
+      String str = "Policy Number: " + policyNumber +
+            "\nProvider Name: " + providerName +
+            "\nPolicyholder's First Name: " + firstName +
+            "\nPolicyholder's Last Name: " + lastName +
+            "\nPolicyholder's Age : " + age + 
+            "\nPolicyholder's Smoking Status (Y/N): " + smokingStatus +
+            "\nPolicyholder's Height: " + height +
+            "\nPolicyholder's Weight: " + weight;
+      return str;
+   }
+
+   
 }
